@@ -2,18 +2,32 @@
 polynomial regression of U.S. census data
 
 polynomial regression of U.S. census data,fitting order number from 1 to 5.(Actually, we can convert polynomial regression problem to gauss elimination method of solving linear algebraic equations)
-t	      y
-1900	75.995
-1910	91.972
-1920	105.711
-1930	123.203
-1940	131.669
-1950	150.697
-1960	179.323
-1970	203.212
-1980	226.505
-1990	249.633
-2000	281.422
+(the exact data is in topic.png)
+t
+1900
+1910
+1920
+1930
+1940
+1950
+1960
+1970
+1980
+1990
+2000
+y
+75.995
+91.972
+105.711
+123.203
+131.669
+150.697
+179.323
+203.212
+226.505
+249.633
+281.422
+
 
 
 
