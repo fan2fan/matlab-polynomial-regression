@@ -1,6 +1,6 @@
-%% homeWork6 ¶àÏîÊ½»Ø¹é
-% ±à³ÌÊµÏÖ¶ÔÃÀ¹úÈË¿ÚÆÕ²éÊı¾İµÄ¶àÏîÊ½»Ø¹é£¬ÄâºÏ½×ÊıÎª1µ½5½×¡£ÒªÇó£º½«¶àÏîÊ½»Ø¹éÎÊÌâ
-% ×ª»»Îª¸ßË¹ÏûÈ¥·¨½âÏßĞÔ´úÊı·½³Ì×é
+%% homeWork6 å¤šé¡¹å¼å›å½’
+% ç¼–ç¨‹å®ç°å¯¹ç¾å›½äººå£æ™®æŸ¥æ•°æ®çš„å¤šé¡¹å¼å›å½’ï¼Œæ‹Ÿåˆé˜¶æ•°ä¸º1åˆ°5é˜¶ã€‚è¦æ±‚ï¼šå°†å¤šé¡¹å¼å›å½’é—®é¢˜
+% è½¬æ¢ä¸ºé«˜æ–¯æ¶ˆå»æ³•è§£çº¿æ€§ä»£æ•°æ–¹ç¨‹ç»„
 
 clc; clear all; close all;
 t = [1900;1910;1920;1930;1940;1950;1960;1970;1980;1990;2000];
@@ -10,144 +10,144 @@ figure(1);
 hold on;
 plot(t,y,'r^','MarkerFaceColor',[1,0,0],'MarkerSize',8);
 plot(t,y,'LineWidth',1.5);
-title('ÃÀ¹úÈË¿ÚÆÕ²éÊı¾İ');xlabel('t');ylabel('y');grid on;
+title('ç¾å›½äººå£æ™®æŸ¥æ•°æ®');xlabel('t');ylabel('y');grid on;
 
-%% ¶ÔÓÚ²»Í¬µÄ½×ÊıµÄ¶àÏîÊ½½øĞĞ»Ø¹éÇó½â¹Ø¼üÔÚÓÚ¹¹Ôì¾ØÕó
+%% å¯¹äºä¸åŒçš„é˜¶æ•°çš„å¤šé¡¹å¼è¿›è¡Œå›å½’æ±‚è§£å…³é”®åœ¨äºæ„é€ çŸ©é˜µ
 
-%% 1½×
+%% 1é˜¶
 x1 = [ones(length(t),1),t];
 a1 = solveMatrix(x1.'*x1,x1.'*y);
-%Ö±½ÓÓÃÓÒ³ı£¬±È½Ï¼ÆËã½á¹û
+%ç›´æ¥ç”¨å·¦é™¤ï¼Œæ¯”è¾ƒè®¡ç®—ç»“æœ
 a1_1 = (x1.'*x1)\(x1.'*y);
 
 
-%»æÖÆÍ¼Ïñ£º
+%ç»˜åˆ¶å›¾åƒï¼š
 f1 = @(t)a1(2)*t + a1(1);
 figure(2);
 hold on;
 plot(t,y,'r^','MarkerFaceColor',[1,0,0],'MarkerSize',8);
 plot(t,f1(t),'LineWidth',1.5);
-title('1½×ÄâºÏ');xlabel('t');ylabel('y');grid on;
+title('1é˜¶æ‹Ÿåˆ');xlabel('t');ylabel('y');grid on;
 
 figure(3)
 hold on;
-%ÀûÓÃcftool¹¤¾ßÏä½øĞĞÄâºÏ
+%åˆ©ç”¨cftoolå·¥å…·ç®±è¿›è¡Œæ‹Ÿåˆ
 p1 = polyfit(t,y,1);
 fp1 = @(t)p1(1)*t + p1(2); 
 plot(t,y,'r^','MarkerFaceColor',[1,0,0],'MarkerSize',8);
 plot(t,fp1(t),'LineWidth',1.5);
-title('polyfit-1½×ÄâºÏ');xlabel('t');ylabel('y');grid on;
+title('polyfit-1é˜¶æ‹Ÿåˆ');xlabel('t');ylabel('y');grid on;
 
-%% 2½×
+%% 2é˜¶
 
 x2 = [ones(length(t),1),t,t.^2];
 a2 = solveMatrix(x2.'*x2,x2.'*y);
-%Ö±½ÓÓÃÓÒ³ı£¬±È½Ï¼ÆËã½á¹û
+%ç›´æ¥ç”¨å·¦é™¤ï¼Œæ¯”è¾ƒè®¡ç®—ç»“æœ
 a2_1 = (x2.'*x2)\(x2.'*y);
 
-%»æÖÆÍ¼Ïñ£º
+%ç»˜åˆ¶å›¾åƒï¼š
 f2 = @(t)a2(3)*t.^2 + a2(2)*t + a2(1);
 figure(4);
 hold on;
 plot(t,y,'r^','MarkerFaceColor',[1,0,0],'MarkerSize',8);
 plot(t,f2(t),'LineWidth',1.5);
-title('2½×ÄâºÏ');xlabel('t');ylabel('y');grid on;
+title('2é˜¶æ‹Ÿåˆ');xlabel('t');ylabel('y');grid on;
 
 p2 = polyfit(t,y,2);
 fp2 = @(t)p2(1)*t.^2 + p2(2)*t + p2(3); 
 figure(5)
 hold on;
-%ÀûÓÃpolyfit½øĞĞÄâºÏ
+%åˆ©ç”¨polyfitè¿›è¡Œæ‹Ÿåˆ
 plot(t,y,'r^','MarkerFaceColor',[1,0,0],'MarkerSize',8);
 plot(t,fp2(t),'LineWidth',1.5);
-title('polyfit-2½×ÄâºÏ');xlabel('t');ylabel('y');grid on;
+title('polyfit-2é˜¶æ‹Ÿåˆ');xlabel('t');ylabel('y');grid on;
 
-%% 3½×
+%% 3é˜¶
 
 x3 = [ones(length(t),1),t,t.^2,t.^3];
 a3 = solveMatrix(x3.'*x3,x3.'*y);
-%Ö±½ÓÓÃÓÒ³ı£¬±È½Ï¼ÆËã½á¹û
+%ç›´æ¥ç”¨å·¦é™¤ï¼Œæ¯”è¾ƒè®¡ç®—ç»“æœ
 a3_1 = (x3.'*x3)\(x3.'*y);
 
-%»æÖÆÍ¼Ïñ£º
+%ç»˜åˆ¶å›¾åƒï¼š
 f3 = @(t)a3(4)*t.^3 + a3(3)*t.^2 + a3(2)*t + a3(1);
 figure(6);
 hold on;
 plot(t,y,'r^','MarkerFaceColor',[1,0,0],'MarkerSize',8);
 plot(t,f3(t),'LineWidth',1.5);
-title('3½×ÄâºÏ');xlabel('t');ylabel('y');grid on;
+title('3é˜¶æ‹Ÿåˆ');xlabel('t');ylabel('y');grid on;
 
 figure(7)
 hold on;
-%ÀûÓÃpolyfit½øĞĞÄâºÏ
+%åˆ©ç”¨polyfitè¿›è¡Œæ‹Ÿåˆ
 p3 = polyfit(t,y,3);
 fp3 = @(t)p3(1)*t.^3 + p3(2)*t.^2 + p3(3)*t + p3(4); 
 plot(t,y,'r^','MarkerFaceColor',[1,0,0],'MarkerSize',8);
 plot(t,fp3(t),'LineWidth',1.5);
-title('polyfit-3½×ÄâºÏ');xlabel('t');ylabel('y');grid on;
+title('polyfit-3é˜¶æ‹Ÿåˆ');xlabel('t');ylabel('y');grid on;
 
-%% 4½×
+%% 4é˜¶
 
 x4 = [ones(length(t),1),t,t.^2,t.^3,t.^4];
 a4 = solveMatrix(x4.'*x4,x4.'*y);
-%Ö±½ÓÓÃÓÒ³ı£¬±È½Ï¼ÆËã½á¹û
+%ç›´æ¥ç”¨å·¦é™¤ï¼Œæ¯”è¾ƒè®¡ç®—ç»“æœ
 a4_1 = (x4.'*x4)\(x4.'*y);
 
-%»æÖÆÍ¼Ïñ£º
+%ç»˜åˆ¶å›¾åƒï¼š
 f4 = @(t)a4(5)*t.^4 + a4(4)*t.^3 + a4(3)*t.^2 + a4(2)*t + a4(1);
 figure(8);
 hold on;
 plot(t,y,'r^','MarkerFaceColor',[1,0,0],'MarkerSize',8);
 plot(t,f4(t),'LineWidth',1.5);
-title('4½×ÄâºÏ');xlabel('t');ylabel('y');grid on;
+title('4é˜¶æ‹Ÿåˆ');xlabel('t');ylabel('y');grid on;
 
 figure(9)
 hold on;
-%ÀûÓÃpolyfit½øĞĞÄâºÏ
+%åˆ©ç”¨polyfitè¿›è¡Œæ‹Ÿåˆ
 p4 = polyfit(t,y,4);
 fp4 = @(t)p4(1)*t.^4 + p4(2)*t.^3 + p4(3)*t.^2 + p4(4)*t + p4(5); 
 plot(t,y,'r^','MarkerFaceColor',[1,0,0],'MarkerSize',8);
 plot(t,fp4(t),'LineWidth',1.5);
-title('polyfit-4½×ÄâºÏ');xlabel('t');ylabel('y');grid on;
+title('polyfit-4é˜¶æ‹Ÿåˆ');xlabel('t');ylabel('y');grid on;
 
-%% 5½×
+%% 5é˜¶
 
 x5 = [ones(length(t),1),t,t.^2,t.^3,t.^4,t.^5];
 a5 = solveMatrix(x5.'*x5,x5.'*y);
-%Ö±½ÓÓÃÓÒ³ı£¬±È½Ï¼ÆËã½á¹û
+%ç›´æ¥ç”¨å·¦é™¤ï¼Œæ¯”è¾ƒè®¡ç®—ç»“æœ
 a5_1 = (x5.'*x5)\(x5.'*y);
 
-%»æÖÆÍ¼Ïñ£º
+%ç»˜åˆ¶å›¾åƒï¼š
 f5 = @(t)a5(6)*t.^5 + a5(5)*t.^4 + a5(4)*t.^3 + a5(3)*t.^2 + a5(2)*t + a5(1);
 figure(10);
 hold on;
 plot(t,y,'r^','MarkerFaceColor',[1,0,0],'MarkerSize',8);
 plot(t,f5(t),'LineWidth',1.5);
-title('5½×ÄâºÏ');xlabel('t');ylabel('y');grid on;
+title('5é˜¶æ‹Ÿåˆ');xlabel('t');ylabel('y');grid on;
 
 figure(11)
 hold on;
-%ÀûÓÃpolyfit½øĞĞÄâºÏ
+%åˆ©ç”¨polyfitè¿›è¡Œæ‹Ÿåˆ
 p5 = polyfit(t,y,5);
 fp5 = @(t)p5(1)*t.^5 + p5(2)*t.^4 + p5(3)*t.^3 + p5(4)*t.^2 + p5(5)*t + p5(6); 
 plot(t,y,'r^','MarkerFaceColor',[1,0,0],'MarkerSize',8);
 plot(t,fp5(t),'LineWidth',1.5);
-title('polyfit-5½×ÄâºÏ');xlabel('t');ylabel('y');grid on;
-% %% 6½×
+title('polyfit-5é˜¶æ‹Ÿåˆ');xlabel('t');ylabel('y');grid on;
+% %% 6é˜¶
 % 
 % x6 = [ones(length(t),1),t,t.^2,t.^3,t.^4,t.^5,t.^6];
 % a6 = solveMatrix(x6.'*x6,x6.'*y);
-% disp('¸ßË¹ÏûÈ¥6½×ÄâºÏº¯ÊıÏµÊı');
+% disp('é«˜æ–¯æ¶ˆå»6é˜¶æ‹Ÿåˆå‡½æ•°ç³»æ•°');
 % disp(double(a6));
-% %Ö±½ÓÓÃÓÒ³ı£¬±È½Ï¼ÆËã½á¹û
+% %ç›´æ¥ç”¨å·¦é™¤ï¼Œæ¯”è¾ƒè®¡ç®—ç»“æœ
 % a6_1 = (x6.'*x6)\(x6.'*y);
-% disp('Ö±½ÓÓÒ³ı6½×ÄâºÏº¯ÊıÏµÊı');
+% disp('ç›´æ¥å³é™¤6é˜¶æ‹Ÿåˆå‡½æ•°ç³»æ•°');
 % disp(double(a6_1));
 % 
-% %»æÖÆÍ¼Ïñ£º
+% %ç»˜åˆ¶å›¾åƒï¼š
 % f6 = @(t)a6(7)*t.^6+a6(6)*t.^5 + a6(5)*t.^4 + a6(4)*t.^3 + a6(3)*t.^2 + a6(2)*t + a6(1);
 % figure(12);
 % hold on;
 % plot(t,y,'r^','MarkerFaceColor',[1,0,0],'MarkerSize',8);
 % plot(t,f6(t),'LineWidth',1.5);
-% title('6½×ÄâºÏ');xlabel('t');ylabel('y');grid on;
+% title('6é˜¶æ‹Ÿåˆ');xlabel('t');ylabel('y');grid on;
